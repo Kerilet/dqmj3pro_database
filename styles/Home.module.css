@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+  background-image: url("/erdrick_symbol.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
