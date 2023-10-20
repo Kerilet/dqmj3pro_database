@@ -1,13 +1,20 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import names from "../pages/api/monsters"
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
-console.log(names)
-
 export default function Home() {
+  const [monsters, setMonsters] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/monsters")
+      .then((x) => x.json())
+      .then(setMonsters);
+  }, []);
+
   return (
     <>
       <Head>
@@ -17,8 +24,7 @@ export default function Home() {
         <link rel="icon" href="/Dqm_j3p_icon.webp" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <div>ata</div>
-        <div className={styles.infoTable}>
+        <div className={styles.tableDiv}>
           <table className={styles.infoTable}>
             <thead>
               <tr>
@@ -32,15 +38,19 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>name_placeholder</td>
-                <td>rank_placeholder</td>
-                <td>size_placeholder</td>
-                <td>family_placeholder</td>
-                <td>recipe_placeholder</td>
-                <td>skill_placeholder</td>
-                <td>details_placeholder</td>
-              </tr>
+              {monsters?.map((x) => (
+                <tr key={x.id}>
+                  <td>{x.name}</td>
+                  <td>{x.rank}</td>
+                  <td>{x.size}</td>
+                  <td>{x.family}</td>
+                  <td>{x.recipe}</td>
+                  <td>{x.skill}</td>
+                  <td>
+                    <Link href="/api/monsters">Detailed Info</Link>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
