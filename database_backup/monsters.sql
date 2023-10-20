@@ -31,8 +31,8 @@ CREATE TABLE `monsters` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `rank` enum('F','E','D','C','B','A','S','SS') NOT NULL,
-  `size` enum('1','2','3','4') NOT NULL,
-  `family` enum('Slime','Nature','Beast','Material','Undead','Devil','Dragon','Break','???') NOT NULL,
+  `size` enum('S','M','G','U') NOT NULL,
+  `family` enum('Slime','Nature','Beast','Material','Undead','Devil','Dragon','Break','Unknown') NOT NULL,
   `hp` int(11) NOT NULL,
   `mp` int(11) NOT NULL,
   `atk` int(11) NOT NULL,
@@ -48,11 +48,11 @@ CREATE TABLE `monsters` (
 --
 
 INSERT INTO `monsters` (`id`, `name`, `rank`, `size`, `family`, `hp`, `mp`, `atk`, `def`, `agi`, `int`, `recipe`, `skill`) VALUES
-(1, 'Black Dragon', 'S', '2', 'Dragon', 1750, 380, 930, 830, 690, 740, 'Great Dragon + Darkwood Spirit', 'Zam'),
-(2, 'Nemeslime', 'S', '1', 'Slime', 1480, 560, 990, 730, 900, 870, 'None (Online Gift Disc)', 'Slider'),
-(3, 'Phantomount', 'SS', '1', 'Beast', 1200, 650, 900, 920, 1450, 780, 'Godsteed + Wonder Wyrtle', 'Sizz'),
-(4, 'Baramos', 'SS', '1', '???', 1650, 780, 640, 890, 720, 1230, 'Baramonster + Bones of Baramos', 'Baramos'),
-(5, 'Overlord Rigor Mortex', 'SS', '3', '???', 1380, 560, 940, 820, 740, 1240, 'None (Online Gift Disc)', 'Rigor Mortex (Super Light)');
+(1, 'Black Dragon', 'S', 'M', 'Dragon', 1750, 380, 930, 830, 690, 740, 'Great Dragon + Darkwood Spirit', 'Zam'),
+(2, 'Nemeslime', 'S', 'S', 'Slime', 1480, 560, 990, 730, 900, 870, 'None (Online Gift Disc)', 'Slider'),
+(3, 'Phantomount', 'SS', 'S', 'Beast', 1200, 650, 900, 920, 1450, 780, 'Godsteed + Wonder Wyrtle', 'Sizz'),
+(4, 'Baramos', 'SS', 'S', 'Unknown', 1650, 780, 640, 890, 720, 1230, 'Baramonster + Bones of Baramos', 'Baramos'),
+(5, 'Overlord Rigor Mortex', 'SS', 'G', 'Unknown', 1380, 560, 940, 820, 740, 1240, 'None (Online Gift Disc)', 'Rigor Mortex (Super Light)');
 
 --
 -- Índices para tabelas despejadas

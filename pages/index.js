@@ -1,8 +1,11 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import names from "../pages/api/monsters"
 
 const inter = Inter({ subsets: ["latin"] });
+
+console.log(names)
 
 export default function Home() {
   return (
@@ -14,20 +17,29 @@ export default function Home() {
         <link rel="icon" href="/Dqm_j3p_icon.webp" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
+        <div>ata</div>
         <div className={styles.infoTable}>
-          <table>
+          <table className={styles.infoTable}>
             <thead>
               <tr>
-                <th>Info1</th>
-                <th>Fino2</th>
-                <th>Nifo3</th>
+                <th>Name</th>
+                <th>Rank</th>
+                <th>Size</th>
+                <th>Family</th>
+                <th>Recipe</th>
+                <th>Skill</th>
+                <th>Detailed Info</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
-                <td>grosso</td>
-                <td>três</td>
+                <td>name_placeholder</td>
+                <td>rank_placeholder</td>
+                <td>size_placeholder</td>
+                <td>family_placeholder</td>
+                <td>recipe_placeholder</td>
+                <td>skill_placeholder</td>
+                <td>details_placeholder</td>
               </tr>
             </tbody>
           </table>
