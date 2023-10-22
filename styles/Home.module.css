@@ -42,8 +42,36 @@
 }
 
 .infoTable a:hover {
+  cursor: pointer;
   background-color: #af0baa;
   -webkit-box-shadow: 10px 10px 54px -1px rgba(154, 14, 149, 1);
   -moz-box-shadow: 10px 10px 54px -1px rgba(154, 14, 149, 1);
   box-shadow: 10px 10px 54px -1px rgba(154, 14, 149, 1);
+}
+
+.cdDiv {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+.cdButtons {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+  border: none;
+  border-radius: 7px;
+  background-color: #6b0a68;
+  transition: ease-in-out 200ms;
+}
+
+.cdButtons:hover {
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  background-color: #f9bf15;
+  -webkit-box-shadow: 10px 10px 95px 7px rgba(249,191,21,1);
+  -moz-box-shadow: 10px 10px 95px 7px rgba(249,191,21,1);
+  box-shadow: 10px 10px 95px 7px rgba(249,191,21,1);
 }

@@ -10,10 +10,14 @@ export default function Home() {
   const [monsters, setMonsters] = useState(null);
 
   useEffect(() => {
-    fetch("/api/monsters/monsters")
+    fetch("/api/monsters/")
       .then((x) => x.json())
       .then(setMonsters);
   }, []);
+
+  if (!monsters) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <>
@@ -51,6 +55,14 @@ export default function Home() {
             ))}
           </tbody>
         </table>
+        <div className={styles.cdDiv}>
+          <Link href={"/monsters/create"} className={styles.cdLink}>
+            <button className={styles.cdButtons}>Add a new monster</button>
+          </Link>
+          <button className={styles.cdButtons}>
+            Remove an existing monster
+          </button>
+        </div>
       </main>
     </>
   );

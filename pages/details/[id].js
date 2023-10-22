@@ -34,6 +34,10 @@ export default function Home() {
         <link rel="icon" href="/Dqm_j3p_icon.webp" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
+        <div className={styles.infoDiv}>
+        <Link href={"/"} className={styles.backLink}>
+        <button className={styles.backButton}>Go Back</button>
+        </Link>
         <table className={styles.infoTable}>
           <tbody>       
               <tr>
@@ -51,6 +55,30 @@ export default function Home() {
               <tr>
                 <th>Family</th>
                 <td>{monster.family}</td>
+              </tr>
+              <tr>
+                <th>HP</th>
+                <td>{monster.hp}</td>
+              </tr>
+              <tr>
+                <th>MP</th>
+                <td>{monster.mp}</td>
+              </tr>
+              <tr>
+                <th>Attack</th>
+                <td>{monster.atk}</td>
+              </tr>
+              <tr>
+                <th>Defense</th>
+                <td>{monster.def}</td>
+              </tr>
+              <tr>
+                <th>Agility</th>
+                <td>{monster.agi}</td>
+              </tr>
+              <tr>
+                <th>Wisdom</th>
+                <td>{monster.int}</td>
               </tr>
               <tr>
                 <th>Recipe</th>
@@ -78,10 +106,7 @@ export default function Home() {
               </tr>  
           </tbody>
         </table>
-
-        <button className="backButton">
-          <Link href={"/"} className="backLink">Go Back</Link>
-        </button>
+        </div>
       </main>
     </>
   );
