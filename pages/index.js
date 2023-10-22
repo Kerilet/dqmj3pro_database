@@ -10,7 +10,7 @@ export default function Home() {
   const [monsters, setMonsters] = useState(null);
 
   useEffect(() => {
-    fetch("/api/monsters")
+    fetch("/api/monsters/monsters")
       .then((x) => x.json())
       .then(setMonsters);
   }, []);
@@ -24,36 +24,33 @@ export default function Home() {
         <link rel="icon" href="/Dqm_j3p_icon.webp" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.tableDiv}>
-          <table className={styles.infoTable}>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Rank</th>
-                <th>Size</th>
-                <th>Family</th>
-                <th>Recipe</th>
-                <th>Skill</th>
-                <th>Detailed Info</th>
+        <table className={styles.infoTable}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Rank</th>
+              <th>Size</th>
+              <th>Family</th>
+              <th>Recipe</th>
+              <th>Detailed Info</th>
+            </tr>
+          </thead>
+          <tbody>
+            {monsters?.map((x) => (
+              <tr key={x.id}>
+                <td>{x.name}</td>
+                <td>{x.rank}</td>
+                <td>{x.size}</td>
+                <td>{x.family}</td>
+                <td>{x.recipe}</td>
+                <td>
+                  {/* <Link href={`/api/details/${x.id}`}>More Info</Link> */}
+                  <Link href={`/details/${x.id}`}>More Info</Link>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {monsters?.map((x) => (
-                <tr key={x.id}>
-                  <td>{x.name}</td>
-                  <td>{x.rank}</td>
-                  <td>{x.size}</td>
-                  <td>{x.family}</td>
-                  <td>{x.recipe}</td>
-                  <td>{x.skill}</td>
-                  <td>
-                    <Link href="/api/monsters">Detailed Info</Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </main>
     </>
   );

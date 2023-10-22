@@ -8,19 +8,23 @@ datasource db {
 }
 
 model monsters {
-  id     Int             @id @default(autoincrement())
-  name   String          @db.VarChar(30)
-  rank   monsters_rank
-  size   monsters_size
-  family monsters_family
-  hp     Int
-  mp     Int
-  atk    Int
-  def    Int
-  agi    Int
-  int    Int
-  recipe String          @db.VarChar(90)
-  skill  String          @db.VarChar(30)
+  id            Int             @id @default(autoincrement())
+  name          String          @db.VarChar(30)
+  rank          monsters_rank
+  size          monsters_size
+  family        monsters_family
+  hp            Int
+  mp            Int
+  atk           Int
+  def           Int
+  agi           Int
+  int           Int
+  recipe        String          @db.VarChar(90)
+  skill         String          @db.VarChar(30)
+  traits        String          @db.VarChar(250)
+  obtainment    String          @db.VarChar(50)
+  merging_skill String          @db.VarChar(30)
+  merging_trait String          @db.VarChar(150)
 }
 
 enum monsters_rank {

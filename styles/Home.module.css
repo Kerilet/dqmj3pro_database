@@ -1,40 +1,35 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   padding: 6rem;
   min-height: 100vh;
-  background-image: url("/erdrick_symbol.png");
+  background-color: rgb(249, 191, 21);
+  background-image: url("/erdrick_symbol.png"),
+    radial-gradient(circle, rgba(249, 191, 21, 1) 0%, rgba(154, 14, 149, 1) 41%, rgba(34, 11, 65, 1) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.tableDiv {
-  display: flex;
-  justify-content: center;
-  margin-top: 9rem;
-}
-
 .infoTable {
-  background-color: rgb(8, 79, 166);
-  padding: 20px;
+  background-color: #9a0e95;
+  padding: 1px;
   border-radius: 10px;
+  opacity: 0.8;
+  width: 100%;
 }
 
 .infoTable tr {
   border-radius: 5px 5px 0px 0px;
   color: #000;
-  background-color: #fce78e;
+  background-color: #f9bf15;
 }
 
 .infoTable td {
-  background-color: #122357;
+  background-color: #220b41;
   color: #fff;
   padding: 10px;
   text-align: center;
   width: 20px;
+  /* white-space: nowrap; */
 }
 
 .infoTable a {
@@ -42,8 +37,13 @@
   text-decoration: none;
   padding: 4px;
   border-radius: 4px;
-  background-color: #807854;
-  -webkit-box-shadow: 10px 10px 87px 12px rgba(252, 231, 142, 1);
-  -moz-box-shadow: 10px 10px 87px 12px rgba(252, 231, 142, 1);
-  box-shadow: 10px 10px 87px 12px rgba(252, 231, 142, 1);
+  background-color: #6b0a68;
+  transition: ease-in-out 200ms;
+}
+
+.infoTable a:hover {
+  background-color: #af0baa;
+  -webkit-box-shadow: 10px 10px 54px -1px rgba(154, 14, 149, 1);
+  -moz-box-shadow: 10px 10px 54px -1px rgba(154, 14, 149, 1);
+  box-shadow: 10px 10px 54px -1px rgba(154, 14, 149, 1);
 }
