@@ -1,13 +1,13 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import styles from "../../styles/Details.module.css";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import styles from "../../styles/Details.module.css";
+import { useEffect, useState } from "react";
+import Loading from "../../components/loading";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  
   const [monster, setMonster] = useState(null);
 
   const {
@@ -21,8 +21,11 @@ export default function Home() {
         .then(setMonster);
   }, [id]);
 
+
   if (!monster) {
-    return <div>Carregando...</div>;
+    return (
+      <Loading />
+    );
   }
 
   return (
@@ -33,13 +36,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/Dqm_j3p_icon.webp" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
+      <main className={styles.main}>
         <div className={styles.infoDiv}>
-        <Link href={"/"} className={styles.backLink}>
-        <button className={styles.backButton}>Go Back</button>
-        </Link>
-        <table className={styles.infoTable}>
-          <tbody>       
+          <div className={styles.actionDiv}>
+            <Link href={"/"} className={styles.backLink}>
+              <button className={styles.actionButton}>Go Back</button>
+            </Link>
+            <button className={styles.actionButton}>Edit this monster</button>
+            <button className={styles.actionButton}>Delete this monster</button>
+          </div>
+          <table className={styles.infoTable}>
+            <tbody>
               <tr>
                 <th>Name</th>
                 <td>{monster.name}</td>
@@ -103,9 +110,9 @@ export default function Home() {
               <tr>
                 <th>Fusion Trait</th>
                 <td>{monster.merging_trait}</td>
-              </tr>  
-          </tbody>
-        </table>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </main>
     </>

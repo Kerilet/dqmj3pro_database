@@ -1,11 +1,8 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import styles from "../../styles/Create.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { register, handleSubmit } = useForm();
@@ -28,7 +25,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/Dqm_j3p_icon.webp" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
+      <main className={styles.main}>
         <div className={styles.infoDiv}>
           <Link href={"/"} className={styles.backLink}>
             <button className={styles.backButton}>Go Back</button>

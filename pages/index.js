@@ -1,10 +1,11 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import styles from "/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Loading from "../components/loading";
+import CloseIcon from "../public/close_icon.svg";
 
-const inter = Inter({ subsets: ["latin"] });
+// fazer tipo uma damage calculator usando os monstros dos players, e tendo alguns bixos tipo bosses como opções pré-feitas
 
 export default function Home() {
   const [monsters, setMonsters] = useState(null);
@@ -16,8 +17,10 @@ export default function Home() {
   }, []);
 
   if (!monsters) {
-    return <div>Carregando...</div>;
+    return <Loading />;
   }
+
+  const currentGame = "Dragon Quest Monsters Joker 3 (Professional)";
 
   return (
     <>
@@ -27,7 +30,21 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/Dqm_j3p_icon.webp" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
+      <main className={styles.main}>
+        <div className={styles.gameInfo}>
+          <button className={styles.cdButtons}>Change current game</button>
+          <p className={styles.currentGame}>SELECTED GAME: {currentGame}</p>
+          <div className={styles.searchDiv}>
+            <input
+              className={styles.searchBar}
+              placeholder="Search for a monster here"
+            />
+            <button className={styles.clearInput}>
+              {/* <CloseIcon /> */}
+              X
+            </button>
+          </div>
+        </div>
         <table className={styles.infoTable}>
           <thead>
             <tr>
@@ -59,9 +76,11 @@ export default function Home() {
           <Link href={"/monsters/create"} className={styles.cdLink}>
             <button className={styles.cdButtons}>Add a new monster</button>
           </Link>
-          <button className={styles.cdButtons}>
-            Remove an existing monster
-          </button>
+          <Link href={"/damage-calculator"} className={styles.cdLink}>
+            <button className={styles.cdButtons}>
+              Go to the Damage Calculator
+            </button>
+          </Link>
         </div>
       </main>
     </>

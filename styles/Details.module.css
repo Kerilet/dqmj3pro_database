@@ -1,3 +1,21 @@
+.loadingDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 15rem 0;
+}
+
+.loadingQuotes {
+  text-align: center;
+}
+
+.loadingImage {
+  display: flex;
+  align-self: center;
+}
+
 .main {
   padding: 6rem;
   min-height: 100vh;
@@ -10,9 +28,10 @@
   background-attachment: scroll;
 }
 
-.infoDiv {
+.actionDiv {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .backLink {
@@ -20,10 +39,9 @@
   font-weight: bold;
   transition: ease-in-out 200ms;
   width: 150px;
-  margin-bottom: 20px;
 }
 
-.backButton {
+.actionButton {
   color: #fff;
   text-decoration: none;
   padding: 10px;
@@ -34,7 +52,7 @@
   transition: ease-in-out 200ms;
 }
 
-.backButton:hover {
+.actionButton:hover {
   cursor: pointer;
   color: #000;
   font-weight: bold;
@@ -42,6 +60,18 @@
   -webkit-box-shadow: 10px 10px 95px 7px rgba(249, 191, 21, 1);
   -moz-box-shadow: 10px 10px 95px 7px rgba(249, 191, 21, 1);
   box-shadow: 10px 10px 95px 7px rgba(249, 191, 21, 1);
+}
+
+.udButton {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  width: 150px;
+  border: none;
+  border-radius: 7px;
+  background-color: #6b0a68;
+  transition: ease-in-out 200ms;
 }
 
 .infoTable {

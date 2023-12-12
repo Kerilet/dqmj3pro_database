@@ -1,0 +1,30 @@
+.main {
+    padding: 6rem;
+    min-height: 100vh;
+    background-color: rgb(40,40,40);
+    background-image: url("/dqmtdp_small_logo.png"),
+    radial-gradient(circle, rgba(40,40,40,1) 0%, rgba(255,178,200,1) 27%, rgba(254,125,160,1) 54%, rgba(226,41,72,1) 73%);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.backButton {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    width: 150px;
+    border: none;
+    border-radius: 7px;
+    background-color: #6b0a68;
+    transition: ease-in-out 200ms;
+}
+
+.backButton:hover {
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    background-color: #f9bf15;
+    -webkit-box-shadow: 10px 10px 95px 7px rgba(249, 191, 21, 1);
+    -moz-box-shadow: 10px 10px 95px 7px rgba(249, 191, 21, 1);
+    box-shadow: 10px 10px 95px 7px rgba(249, 191, 21, 1);
+}

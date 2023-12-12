@@ -1,0 +1,28 @@
+.main {
+  padding: 6rem;
+  min-height: 100vh;
+  background-color: rgb(249, 191, 21);
+  background-image: url("/erdrick_symbol.png"),
+    radial-gradient(circle, rgba(249, 191, 21, 1) 0%, rgba(154, 14, 149, 1) 41%, rgba(34, 11, 65, 1) 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.loadingDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 15rem 0;
+  }
+  
+  .loadingQuotes {
+    text-align: center;
+  }
+  
+  .loadingImage {
+    display: flex;
+    align-self: center;
+  }
