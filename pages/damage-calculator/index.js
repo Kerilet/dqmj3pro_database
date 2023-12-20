@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "@/styles/Calculator.module.css";
+import styles from "/styles/Calculator.module.scss";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Loading from "../../components/loading";

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "../../styles/Create.module.css";
+import styles from "../../styles/Create.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";

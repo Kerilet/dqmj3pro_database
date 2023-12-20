@@ -1,3 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -89,3 +93,11 @@ button {
     color-scheme: dark;
   }
 }
+
+/* .DQMJ {
+  padding: 200px;
+}
+
+.DQMJ2 {
+  padding: 500px;
+} */

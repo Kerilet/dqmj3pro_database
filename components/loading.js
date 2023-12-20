@@ -1,6 +1,6 @@
 import Image from "next/image";
 import PsaroGif from "../public/psaro_dqmj2_animated.gif";
-import styles from "@/styles/Loading.module.css";
+import styles from "@/styles/Loading.module.scss";
 import { useEffect, useState } from "react";
 
 

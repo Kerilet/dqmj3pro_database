@@ -1,14 +1,26 @@
 import Head from "next/head";
-import styles from "/styles/Home.module.css";
+import styles from "/styles/Home.module.scss";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Loading from "../components/loading";
 import CloseIcon from "../public/close_icon.svg";
-
-// fazer tipo uma damage calculator usando os monstros dos players, e tendo alguns bixos tipo bosses como opções pré-feitas
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@nextui-org/react";
 
 export default function Home() {
   const [monsters, setMonsters] = useState(null);
+  const [searchInfo, setSearchInfo] = useState("");
+  const [currentGame, setCurrentGame] = useState(
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("currentGame")
+      : ""
+  );
+  const [theme, setTheme] = useState(
+    typeof window !== "undefined" ? window.localStorage.getItem("theme") : ""
+  );
 
   useEffect(() => {
     fetch("/api/monsters/")
@@ -16,11 +28,46 @@ export default function Home() {
       .then(setMonsters);
   }, []);
 
+  useEffect(() => {
+    if (typeof window === 'undefined')
+      return;
+  
+    document.body.classList.add(styles[theme]);
+  
+    return () => {
+      document.body.classList.remove(styles[theme]);
+    }
+  }, [theme]);
+
   if (!monsters) {
     return <Loading />;
   }
 
-  const currentGame = "Dragon Quest Monsters Joker 3 (Professional)";
+  const searchHandler = ({ target }) => {
+    setSearchInfo(target.value);
+  };
+
+  const cleanSearchInput = () => setSearchInfo("");
+
+  const games = [
+    "Dragon Quest Monsters: Joker",
+    "Dragon Quest Monsters: Joker 2",
+    "Dragon Quest Monsters: Joker 3 (Professional)",
+    "Dragon Quest Monsters 3: The Dark Prince",
+  ];
+
+  const gameAbrevs = ["DQMJ", "DQMJ2", "DQMJ3PRO", "DQM3TDP"];
+
+  const changeCurrentGame = (game) => {
+    window.localStorage.setItem("currentGame", game);
+    setCurrentGame(window.localStorage.getItem("currentGame"));
+    for (let i = 0; i < games.length + 1; i++) {
+      if (game === games[i]) {
+        window.localStorage.setItem("theme", gameAbrevs[i]);
+        setTheme(gameAbrevs[i]);
+      }
+    }
+  };
 
   return (
     <>
@@ -30,59 +77,82 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/Dqm_j3p_icon.webp" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.gameInfo}>
-          <button className={styles.cdButtons}>Change current game</button>
-          <p className={styles.currentGame}>SELECTED GAME: {currentGame}</p>
-          <div className={styles.searchDiv}>
-            <input
-              className={styles.searchBar}
-              placeholder="Search for a monster here"
-            />
-            <button className={styles.clearInput}>
-              {/* <CloseIcon /> */}
-              X
-            </button>
+      <div className={styles[theme]}>
+        <main className={styles.main}>
+          <div className={styles.gameInfo}>
+            <Dropdown className={styles.gameDropdown}>
+              <DropdownTrigger>
+                <button className={styles.cdButtons}>
+                  Change current game
+                </button>
+              </DropdownTrigger>
+              <DropdownMenu
+                aria-label="Action event example"
+                className={styles.gameMenu}
+                onAction={(key) => changeCurrentGame(key)}
+                itemClasses={{ base: [styles.gameItems] }}
+              >
+                <DropdownItem key={games[0]}>{games[0]}</DropdownItem>
+                <DropdownItem key={games[1]}>{games[1]}</DropdownItem>
+                <DropdownItem key={games[2]}>{games[2]}</DropdownItem>
+                <DropdownItem key={games[3]}>{games[3]}</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+            <p className={styles.currentGame}>SELECTED GAME: {currentGame}</p>
+            <div className={styles.searchDiv}>
+              <input
+                className={styles.searchBar}
+                placeholder="Search for a monster here"
+                value={searchInfo}
+                onChange={searchHandler}
+              />
+              <button
+                className={styles.clearInput}
+                onClick={() => cleanSearchInput()}
+              >
+                <CloseIcon />
+              </button>
+            </div>
           </div>
-        </div>
-        <table className={styles.infoTable}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Rank</th>
-              <th>Size</th>
-              <th>Family</th>
-              <th>Recipe</th>
-              <th>Detailed Info</th>
-            </tr>
-          </thead>
-          <tbody>
-            {monsters?.map((x) => (
-              <tr key={x.id}>
-                <td>{x.name}</td>
-                <td>{x.rank}</td>
-                <td>{x.size}</td>
-                <td>{x.family}</td>
-                <td>{x.recipe}</td>
-                <td>
-                  {/* <Link href={`/api/details/${x.id}`}>More Info</Link> */}
-                  <Link href={`/details/${x.id}`}>More Info</Link>
-                </td>
+          <table className={styles.infoTable}>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Rank</th>
+                <th>Size</th>
+                <th>Family</th>
+                <th>Recipe</th>
+                <th>Detailed Info</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className={styles.cdDiv}>
-          <Link href={"/monsters/create"} className={styles.cdLink}>
-            <button className={styles.cdButtons}>Add a new monster</button>
-          </Link>
-          <Link href={"/damage-calculator"} className={styles.cdLink}>
-            <button className={styles.cdButtons}>
-              Go to the Damage Calculator
-            </button>
-          </Link>
-        </div>
-      </main>
+            </thead>
+            <tbody>
+              {monsters?.map((x) => (
+                <tr key={x.id}>
+                  <td>{x.name}</td>
+                  <td>{x.rank}</td>
+                  <td>{x.size}</td>
+                  <td>{x.family}</td>
+                  <td>{x.recipe}</td>
+                  <td>
+                    {/* <Link href={`/api/details/${x.id}`}>More Info</Link> */}
+                    <a href={`/details/${x.id}`}>More Info</a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className={styles.cdDiv}>
+            <a href={"/monsters/create"} className={styles.cdLink}>
+              <button className={styles.cdButtons}>Add a new monster</button>
+            </a>
+            <a href={"/damage-calculator"} className={styles.cdLink}>
+              <button className={styles.cdButtons}>
+                Go to the Damage Calculator
+              </button>
+            </a>
+          </div>
+        </main>
+      </div>
     </>
   );
 }
