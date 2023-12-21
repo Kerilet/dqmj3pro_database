@@ -1,31 +1,76 @@
-.loadingDiv {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 15rem 0;
+.DQMJ {
+  --background-base-color: #87eafd;
+  --background-primary: #00284a;
+  --background-secondary: #00518b;
+  --background-terciary: #011c33;
+  --background-primary-hover: #7ad2e3;
+  --background-image: url("/erdrick_symbol.png"), radial-gradient(circle, #87eafd 6%, #00518b 73%, #00284a 100%);
+  --background-size: cover;
+  --shadow-color-primary: 10px 10px 95px 7px var(--background-base-color);
+  --shadow-color-secondary: 10px 10px 54px -1px var(--background-primary-hover);
+  --default-transition: ease-in-out 200ms;
+  --text-primary: #fff;
+  --text-secondary: #000;
+  --text-inputs: #ccc;
 }
 
-.loadingQuotes {
-  text-align: center;
+.DQMJ2 {
+  --background-base-color: #6675d9;
+  --background-primary: #e7d12c;
+  --background-secondary: #4a55f7;
+  --background-terciary: #151515;
+  --background-primary-hover: #9198ff;
+  --background-image: url("/erdrick_symbol.png"), radial-gradient(circle, #6675d9 6%, #f06676 61%, #fbde00 93%);
+  --background-size: cover;
+  --shadow-color-primary: 10px 10px 95px 7px var(--background-base-color);
+  --shadow-color-secondary: 10px 10px 54px -1px var(--background-primary-hover);
+  --default-transition: ease-in-out 200ms;
+  --text-primary: #fff;
+  --text-secondary: #000;
+  --text-inputs: #eee;
 }
 
-.loadingImage {
-  display: flex;
-  align-self: center;
+.DQMJ3PRO {
+  --background-base-color: #f9bf15;
+  --background-primary: #6b0a68;
+  --background-secondary: #f9bf15;
+  --background-terciary: #220b41;
+  --background-primary-hover: #bd0eb7;
+  --background-image: url("/erdrick_symbol.png"), radial-gradient(circle, #f9bf15 0%, #9a0e95 41%, #220b41 100%);
+  --background-size: cover;
+  --shadow-color-primary: 10px 10px 95px 7px var(--background-base-color);
+  --shadow-color-secondary: 10px 10px 54px -1px var(--background-primary-hover);
+  --default-transition: ease-in-out 200ms;
+  --text-primary: #fff;
+  --text-secondary: #000;
+  --text-inputs: #eee;
+}
+
+.DQM3TDP {
+  --background-base-color: #282828;
+  --background-primary: #282828;
+  --background-secondary: #e22948;
+  --background-terciary: #050505;
+  --background-primary-hover: #fe7da0;
+  --background-image: url("/dqmtdp_small_logo.png"),
+    radial-gradient(circle, #282828 0%, #ffb2c8 27%, #fe7da0 54%, #e22948 73%);
+  --background-size: auto;
+  --shadow-color-primary: 10px 10px 95px 7px var(--background-base-color);
+  --shadow-color-secondary: 10px 10px 54px -1px var(--background-primary-hover);
+  --default-transition: ease-in-out 200ms;
+  --text-primary: #fff;
+  --text-secondary: #000;
+  --text-inputs: #ccc;
 }
 
 .main {
-  padding: 6rem;
-  min-height: 100vh;
-  background-color: rgb(249, 191, 21);
-  background-image: url("/erdrick_symbol.png"),
-    radial-gradient(circle, rgba(249, 191, 21, 1) 0%, rgba(154, 14, 149, 1) 41%, rgba(34, 11, 65, 1) 100%);
-  background-size: cover;
+  background-color: var(--background-base-color);
+  background-image: var(--background-image);
+  background-size: var(--background-size);
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: scroll;
+  padding: 6rem;
+  min-height: 100vh;
 }
 
 .actionDiv {
@@ -42,75 +87,79 @@
 }
 
 .actionButton {
-  color: #fff;
+  color: var(--text-primary);
   text-decoration: none;
   padding: 10px;
   width: 150px;
   border: none;
   border-radius: 7px;
-  background-color: #6b0a68;
+  background-color: var(--background-primary);
   transition: ease-in-out 200ms;
 }
 
 .actionButton:hover {
   cursor: pointer;
-  color: #000;
+  color: var(--text-secondary);
   font-weight: bold;
-  background-color: #f9bf15;
-  -webkit-box-shadow: 10px 10px 95px 7px rgba(249, 191, 21, 1);
-  -moz-box-shadow: 10px 10px 95px 7px rgba(249, 191, 21, 1);
-  box-shadow: 10px 10px 95px 7px rgba(249, 191, 21, 1);
+  background-color: var(--background-secondary);
+  -webkit-box-shadow: var(--shadow-color-primary);
+  -moz-box-shadow: var(--shadow-color-primary);
+  box-shadow: var(--shadow-color-primary);
 }
 
 .udButton {
-  color: #fff;
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: bold;
   padding: 10px;
   width: 150px;
   border: none;
   border-radius: 7px;
-  background-color: #6b0a68;
+  background-color: var(--background-primary);
   transition: ease-in-out 200ms;
-}
-
-.infoTable {
-  background-color: #9a0e95;
-  padding: 1px;
-  border-radius: 10px;
-  opacity: 0.8;
-  width: 100%;
 }
 
 .infoTable th {
   width: 20%;
 }
 
+.infoTable {
+  background-color: var(--background-primary-hover);
+  transition: var(--default-transition);
+  padding: 1px;
+  border-radius: 10px;
+  opacity: 0.8;
+  width: 100%;
+}
+
 .infoTable tr {
   border-radius: 5px 5px 0px 0px;
-  color: #000;
-  background-color: #f9bf15;
+  color: var(--text-secondary);
+  background-color: var(--background-secondary);
+  transition: var(--default-transition);
 }
 
 .infoTable td {
-  background-color: #220b41;
-  color: #fff;
+  transition: var(--default-transition);
+  background-color: var(--background-terciary);
+  color: var(--text-primary);
   padding: 10px;
+  text-align: center;
   width: 20px;
 }
 
 .infoTable a {
-  color: #fff;
+  color: var(--text-primary);
   text-decoration: none;
   padding: 4px;
   border-radius: 4px;
-  background-color: #6b0a68;
+  background-color: var(--background-primary);
   transition: ease-in-out 200ms;
 }
 
 .infoTable a:hover {
-  background-color: #af0baa;
-  -webkit-box-shadow: 10px 10px 54px -1px rgba(154, 14, 149, 1);
-  -moz-box-shadow: 10px 10px 54px -1px rgba(154, 14, 149, 1);
-  box-shadow: 10px 10px 54px -1px rgba(154, 14, 149, 1);
+  background-color: var(--background-secondary);
+  -webkit-box-shadow: var(--shadow-color-primary);
+  -moz-box-shadow: var(--shadow-color-primary);
+  box-shadow: var(--shadow-color-primary);
 }
